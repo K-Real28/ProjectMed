@@ -30,7 +30,7 @@ const routes: Routes = [{ path: 'main', component: MainComponent },
   { path: 'create-polyclinic', component: CreatePolyclinicComponent, canActivate: [AuthorizeGuard]},
   { path: 'create-specialization', component: CreateSpecializationComponent, canActivate: [AuthorizeGuard]},
   { path: 'create-doctor', component: CreateDoctorComponent, canActivate: [AuthorizeGuard]},
-{ path: '**', redirectTo: '/' }];
+{ path: '**', redirectTo: '/main' }];
 
 @NgModule({
   declarations: [
