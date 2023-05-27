@@ -16,12 +16,20 @@ import { CitiesComponent } from './pages/Cities/cities.component';
 import { DoctorsComponent } from './pages/Doctors/doctors.component';
 import { SpecializationsComponent } from './pages/Specializations/specializations.component';
 import { PolyclinicsComponent } from './pages/Polyclinics/polyclinics.component';
+import {CreateCityComponent} from "./pages/create-city/create-city.component";
+import {CreatePolyclinicComponent} from "./pages/create-polyclinic/create-polyclinic.component";
+import {CreateSpecializationComponent} from "./pages/create-specialization/create-specialization.component";
+import {CreateDoctorComponent} from "./pages/create-doctor/create-doctor.component";
 
 const routes: Routes = [{ path: 'main', component: MainComponent },
-{ path: 'cities', component: CitiesComponent, canActivate: [AuthorizeGuard] },
+{ path: 'cities', component: CitiesComponent },
 { path: 'doc', component: DoctorsComponent, canActivate: [AuthorizeGuard] },
 { path: 'spec', component: SpecializationsComponent , canActivate: [AuthorizeGuard]},
 { path: 'hospital', component: PolyclinicsComponent, canActivate: [AuthorizeGuard] },
+  { path: 'create-city', component: CreateCityComponent, canActivate: [AuthorizeGuard]},
+  { path: 'create-polyclinic', component: CreatePolyclinicComponent, canActivate: [AuthorizeGuard]},
+  { path: 'create-specialization', component: CreateSpecializationComponent, canActivate: [AuthorizeGuard]},
+  { path: 'create-doctor', component: CreateDoctorComponent, canActivate: [AuthorizeGuard]},
 { path: '**', redirectTo: '/' }];
 
 @NgModule({

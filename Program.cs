@@ -1,11 +1,8 @@
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using ProjectMed;
 using ProjectMed.Data;
 using ProjectMed.Models;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
