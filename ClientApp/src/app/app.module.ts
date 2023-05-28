@@ -20,6 +20,10 @@ import {CreateCityComponent} from "./pages/create-city/create-city.component";
 import {CreatePolyclinicComponent} from "./pages/create-polyclinic/create-polyclinic.component";
 import {CreateSpecializationComponent} from "./pages/create-specialization/create-specialization.component";
 import {CreateDoctorComponent} from "./pages/create-doctor/create-doctor.component";
+import {PutPolyclinicComponent} from "./pages/put-polyclinic/put-polyclinic.component";
+import {PutSpecializationComponent} from "./pages/put-specialization/put-specialization.component";
+import {PutCityComponent} from "./pages/put-city/put-city.component";
+import {PutDoctorComponent} from "./pages/put-doctor/put-doctor.component";
 
 const routes: Routes = [{ path: 'main', component: MainComponent },
 { path: 'cities', component: CitiesComponent },
@@ -30,6 +34,11 @@ const routes: Routes = [{ path: 'main', component: MainComponent },
   { path: 'create-polyclinic', component: CreatePolyclinicComponent, canActivate: [AuthorizeGuard]},
   { path: 'create-specialization', component: CreateSpecializationComponent, canActivate: [AuthorizeGuard]},
   { path: 'create-doctor', component: CreateDoctorComponent, canActivate: [AuthorizeGuard]},
+  { path: 'put-polyclinic', component: PutPolyclinicComponent, canActivate: [AuthorizeGuard]},
+  { path: 'put-doctor', component: PutDoctorComponent, canActivate: [AuthorizeGuard]},
+  { path: 'put-city', component: PutCityComponent, canActivate: [AuthorizeGuard]},
+  { path: 'put-specialization', component: PutSpecializationComponent, canActivate: [AuthorizeGuard]},
+
 { path: '**', redirectTo: '/main' }];
 
 @NgModule({
@@ -39,6 +48,14 @@ const routes: Routes = [{ path: 'main', component: MainComponent },
     HomeComponent,
     MainComponent,
     CitiesComponent,
+    CreateCityComponent,
+    CreatePolyclinicComponent,
+    CreateSpecializationComponent,
+    CreateDoctorComponent,
+    PutCityComponent,
+    PutDoctorComponent,
+    PutPolyclinicComponent,
+    PutSpecializationComponent,
     DoctorsComponent,
     SpecializationsComponent,
     PolyclinicsComponent,
