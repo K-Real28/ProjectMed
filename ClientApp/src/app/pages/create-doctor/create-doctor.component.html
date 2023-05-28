@@ -1,36 +1,46 @@
 <h1>Добавление нового доктора</h1>
 
 <div class="form-group">
-  <label>ФИО</label>
-  <input type="text"  class="form-control" />
+  <form (ngSubmit)="create()">
+    <label>ФИО</label>
+    <input type="text" name="full" [(ngModel)]="request.fullName" class="form-control"/>
 
-  <label>Специализация</label>
-  <input type="text"  class="form-control" />
+    <!--  <label>Специализация</label>-->
+    <!--  <input type="text"  class="form-control" />-->
 
-  <label>Поликлиника </label>
-  <input type="text"  class="form-control" />
+<!--    <mat-form-field>-->
+<!--      <mat-label>Специализации</mat-label>-->
+<!--      <mat-select  multiple>-->
+<!--        <mat-option *ngFor="let specialization of specializations">{{specialization.name}}</mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
 
-  <label>Стоимость приема</label>
-  <input type="number"  class="form-control" />
+    <!--  <label>Поликлиника </label>-->
+    <!--  <input type="text"  class="form-control" />-->
 
-  <label>Номер телефона</label>
-  <input type="number"  class="form-control" />
+    <label>Стоимость приема</label>
+    <input type="number" class="form-control"/>
 
-  <label>Фото</label>
-  <input type="text"  class="form-control" />
+    <label>Номер телефона</label>
+    <input type="number" class="form-control"/>
 
-  <label>Опыт по специальности</label>
-  <input type="text"  class="form-control" />
+    <!--  <label>Фото</label>-->
+    <!--  <input type="text"  class="form-control" />-->
 
-  <label>Краткое описание</label>
-  <input type="text"  class="form-control" />
+    <label>Опыт по специальности</label>
+    <input type="number" [ngModel]="" class="form-control"/>
 
-  <label>Полное описание</label>
-  <input type="text"  class="form-control" />
+    <label>Краткое описание</label>
+    <input type="text" class="form-control"/>
 
-</div>
+    <label>Полное описание</label>
+    <input type="text" class="form-control"/>
 
-<div class="butt">
-  <input type="button" value="Сохранить"  class="btn btn-success" />
-  <input type="button" value="Отмена"  class="btn btn-warning" />
+
+    <div class="butt">
+      <input type="submit" value="Сохранить" class="btn btn-success"/>
+      <input type="button" value="Отмена" class="btn btn-warning"/>
+    </div>
+
+  </form>
 </div>

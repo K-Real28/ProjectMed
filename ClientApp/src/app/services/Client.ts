@@ -29,11 +29,11 @@ export class Client {
   /**
    * @return Success
    */
-  getCity(): Observable<CityDto[]> {
-    let url_ = this.baseUrl + "/api/Cities/GetCity";
+  getCities(): Observable<CityDto[]> {
+    let url_ = this.baseUrl + "/api/Cities/GetCities";
     url_ = url_.replace(/[?&]$/, "");
 
-    let options_: any = {
+    let options_ : any = {
       observe: "response",
       responseType: "blob",
       headers: new HttpHeaders({
@@ -41,12 +41,12 @@ export class Client {
       })
     };
 
-    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
-      return this.processGetCity(response_);
+    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+      return this.processGetCities(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
         try {
-          return this.processGetCity(response_ as any);
+          return this.processGetCities(response_ as any);
         } catch (e) {
           return _observableThrow(e) as any as Observable<CityDto[]>;
         }
@@ -55,13 +55,13 @@ export class Client {
     }));
   }
 
-  protected processGetCity(response: HttpResponseBase): Observable<CityDto[]> {
+  protected processGetCities(response: HttpResponseBase): Observable<CityDto[]> {
     const status = response.status;
     const responseBlob =
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -94,7 +94,7 @@ export class Client {
     url_ = url_.replace("{id}", encodeURIComponent("" + id));
     url_ = url_.replace(/[?&]$/, "");
 
-    let options_: any = {
+    let options_ : any = {
       observe: "response",
       responseType: "blob",
       headers: new HttpHeaders({
@@ -102,7 +102,7 @@ export class Client {
       })
     };
 
-    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processGetCityById(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -122,7 +122,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -139,7 +139,7 @@ export class Client {
   }
 
   /**
-   * @param body (optional) 
+   * @param body (optional)
    * @return Success
    */
   createCity(body: CityDto | undefined): Observable<CityDto> {
@@ -148,7 +148,7 @@ export class Client {
 
     const content_ = JSON.stringify(body);
 
-    let options_: any = {
+    let options_ : any = {
       body: content_,
       observe: "response",
       responseType: "blob",
@@ -158,7 +158,7 @@ export class Client {
       })
     };
 
-    return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processCreateCity(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -178,7 +178,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -195,7 +195,7 @@ export class Client {
   }
 
   /**
-   * @param body (optional) 
+   * @param body (optional)
    * @return Success
    */
   updateCityById(id: number, body: CityDto | undefined): Observable<CityDto> {
@@ -207,7 +207,7 @@ export class Client {
 
     const content_ = JSON.stringify(body);
 
-    let options_: any = {
+    let options_ : any = {
       body: content_,
       observe: "response",
       responseType: "blob",
@@ -217,7 +217,7 @@ export class Client {
       })
     };
 
-    return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processUpdateCityById(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -237,7 +237,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -263,14 +263,14 @@ export class Client {
     url_ = url_.replace("{id}", encodeURIComponent("" + id));
     url_ = url_.replace(/[?&]$/, "");
 
-    let options_: any = {
+    let options_ : any = {
       observe: "response",
       responseType: "blob",
       headers: new HttpHeaders({
       })
     };
 
-    return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processDeleteCityById(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -290,7 +290,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         return _observableOf(null as any);
@@ -306,11 +306,11 @@ export class Client {
   /**
    * @return Success
    */
-  getDoctor(): Observable<DoctorDto[]> {
-    let url_ = this.baseUrl + "/api/Doctors/GetDoctor";
+  getDoctors(): Observable<DoctorDto[]> {
+    let url_ = this.baseUrl + "/api/Doctors/GetDoctors";
     url_ = url_.replace(/[?&]$/, "");
 
-    let options_: any = {
+    let options_ : any = {
       observe: "response",
       responseType: "blob",
       headers: new HttpHeaders({
@@ -318,12 +318,12 @@ export class Client {
       })
     };
 
-    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
-      return this.processGetDoctor(response_);
+    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+      return this.processGetDoctors(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
         try {
-          return this.processGetDoctor(response_ as any);
+          return this.processGetDoctors(response_ as any);
         } catch (e) {
           return _observableThrow(e) as any as Observable<DoctorDto[]>;
         }
@@ -332,13 +332,13 @@ export class Client {
     }));
   }
 
-  protected processGetDoctor(response: HttpResponseBase): Observable<DoctorDto[]> {
+  protected processGetDoctors(response: HttpResponseBase): Observable<DoctorDto[]> {
     const status = response.status;
     const responseBlob =
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -371,7 +371,7 @@ export class Client {
     url_ = url_.replace("{id}", encodeURIComponent("" + id));
     url_ = url_.replace(/[?&]$/, "");
 
-    let options_: any = {
+    let options_ : any = {
       observe: "response",
       responseType: "blob",
       headers: new HttpHeaders({
@@ -379,7 +379,7 @@ export class Client {
       })
     };
 
-    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processGetDoctorById(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -399,7 +399,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -416,7 +416,7 @@ export class Client {
   }
 
   /**
-   * @param body (optional) 
+   * @param body (optional)
    * @return Success
    */
   createDoctor(body: DoctorDto | undefined): Observable<DoctorDto> {
@@ -425,7 +425,7 @@ export class Client {
 
     const content_ = JSON.stringify(body);
 
-    let options_: any = {
+    let options_ : any = {
       body: content_,
       observe: "response",
       responseType: "blob",
@@ -435,7 +435,7 @@ export class Client {
       })
     };
 
-    return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processCreateDoctor(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -455,7 +455,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -472,7 +472,7 @@ export class Client {
   }
 
   /**
-   * @param body (optional) 
+   * @param body (optional)
    * @return Success
    */
   updateDoctorById(id: number, body: DoctorDto | undefined): Observable<DoctorDto> {
@@ -484,7 +484,7 @@ export class Client {
 
     const content_ = JSON.stringify(body);
 
-    let options_: any = {
+    let options_ : any = {
       body: content_,
       observe: "response",
       responseType: "blob",
@@ -494,7 +494,7 @@ export class Client {
       })
     };
 
-    return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processUpdateDoctorById(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -514,7 +514,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -540,14 +540,14 @@ export class Client {
     url_ = url_.replace("{id}", encodeURIComponent("" + id));
     url_ = url_.replace(/[?&]$/, "");
 
-    let options_: any = {
+    let options_ : any = {
       observe: "response",
       responseType: "blob",
       headers: new HttpHeaders({
       })
     };
 
-    return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processDeleteDoctorById(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -567,7 +567,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         return _observableOf(null as any);
@@ -583,11 +583,61 @@ export class Client {
   /**
    * @return Success
    */
-  getPolyclinic(): Observable<PolyclinicDto[]> {
-    let url_ = this.baseUrl + "/api/Polyclinics/GetPolyclinic";
+  _configuration(clientId: string): Observable<void> {
+    let url_ = this.baseUrl + "/_configuration/{clientId}";
+    if (clientId === undefined || clientId === null)
+      throw new Error("The parameter 'clientId' must be defined.");
+    url_ = url_.replace("{clientId}", encodeURIComponent("" + clientId));
     url_ = url_.replace(/[?&]$/, "");
 
-    let options_: any = {
+    let options_ : any = {
+      observe: "response",
+      responseType: "blob",
+      headers: new HttpHeaders({
+      })
+    };
+
+    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+      return this.process_configuration(response_);
+    })).pipe(_observableCatch((response_: any) => {
+      if (response_ instanceof HttpResponseBase) {
+        try {
+          return this.process_configuration(response_ as any);
+        } catch (e) {
+          return _observableThrow(e) as any as Observable<void>;
+        }
+      } else
+        return _observableThrow(response_) as any as Observable<void>;
+    }));
+  }
+
+  protected process_configuration(response: HttpResponseBase): Observable<void> {
+    const status = response.status;
+    const responseBlob =
+      response instanceof HttpResponse ? response.body :
+        (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+    if (status === 200) {
+      return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+        return _observableOf(null as any);
+      }));
+    } else if (status !== 200 && status !== 204) {
+      return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+        return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+      }));
+    }
+    return _observableOf(null as any);
+  }
+
+  /**
+   * @return Success
+   */
+  getPolyclinics(): Observable<PolyclinicDto[]> {
+    let url_ = this.baseUrl + "/api/Polyclinics/GetPolyclinics";
+    url_ = url_.replace(/[?&]$/, "");
+
+    let options_ : any = {
       observe: "response",
       responseType: "blob",
       headers: new HttpHeaders({
@@ -595,12 +645,12 @@ export class Client {
       })
     };
 
-    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
-      return this.processGetPolyclinic(response_);
+    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+      return this.processGetPolyclinics(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
         try {
-          return this.processGetPolyclinic(response_ as any);
+          return this.processGetPolyclinics(response_ as any);
         } catch (e) {
           return _observableThrow(e) as any as Observable<PolyclinicDto[]>;
         }
@@ -609,13 +659,13 @@ export class Client {
     }));
   }
 
-  protected processGetPolyclinic(response: HttpResponseBase): Observable<PolyclinicDto[]> {
+  protected processGetPolyclinics(response: HttpResponseBase): Observable<PolyclinicDto[]> {
     const status = response.status;
     const responseBlob =
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -648,7 +698,7 @@ export class Client {
     url_ = url_.replace("{id}", encodeURIComponent("" + id));
     url_ = url_.replace(/[?&]$/, "");
 
-    let options_: any = {
+    let options_ : any = {
       observe: "response",
       responseType: "blob",
       headers: new HttpHeaders({
@@ -656,7 +706,7 @@ export class Client {
       })
     };
 
-    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processGetPolyclinicById(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -676,7 +726,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -693,7 +743,7 @@ export class Client {
   }
 
   /**
-   * @param body (optional) 
+   * @param body (optional)
    * @return Success
    */
   createPolyclinic(body: PolyclinicDto | undefined): Observable<PolyclinicDto> {
@@ -702,7 +752,7 @@ export class Client {
 
     const content_ = JSON.stringify(body);
 
-    let options_: any = {
+    let options_ : any = {
       body: content_,
       observe: "response",
       responseType: "blob",
@@ -712,7 +762,7 @@ export class Client {
       })
     };
 
-    return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processCreatePolyclinic(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -732,7 +782,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -749,7 +799,7 @@ export class Client {
   }
 
   /**
-   * @param body (optional) 
+   * @param body (optional)
    * @return Success
    */
   updatePolyclinicById(id: number, body: PolyclinicDto | undefined): Observable<PolyclinicDto> {
@@ -761,7 +811,7 @@ export class Client {
 
     const content_ = JSON.stringify(body);
 
-    let options_: any = {
+    let options_ : any = {
       body: content_,
       observe: "response",
       responseType: "blob",
@@ -771,7 +821,7 @@ export class Client {
       })
     };
 
-    return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processUpdatePolyclinicById(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -791,7 +841,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -817,14 +867,14 @@ export class Client {
     url_ = url_.replace("{id}", encodeURIComponent("" + id));
     url_ = url_.replace(/[?&]$/, "");
 
-    let options_: any = {
+    let options_ : any = {
       observe: "response",
       responseType: "blob",
       headers: new HttpHeaders({
       })
     };
 
-    return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processDeletePolyclinicById(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -844,7 +894,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         return _observableOf(null as any);
@@ -860,11 +910,11 @@ export class Client {
   /**
    * @return Success
    */
-  getSpecialization(): Observable<SpecializationDto[]> {
-    let url_ = this.baseUrl + "/api/Specializations/GetSpecialization";
+  getSpecializations(): Observable<SpecializationDto[]> {
+    let url_ = this.baseUrl + "/api/Specializations/GetSpecializations";
     url_ = url_.replace(/[?&]$/, "");
 
-    let options_: any = {
+    let options_ : any = {
       observe: "response",
       responseType: "blob",
       headers: new HttpHeaders({
@@ -872,12 +922,12 @@ export class Client {
       })
     };
 
-    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
-      return this.processGetSpecialization(response_);
+    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+      return this.processGetSpecializations(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
         try {
-          return this.processGetSpecialization(response_ as any);
+          return this.processGetSpecializations(response_ as any);
         } catch (e) {
           return _observableThrow(e) as any as Observable<SpecializationDto[]>;
         }
@@ -886,13 +936,13 @@ export class Client {
     }));
   }
 
-  protected processGetSpecialization(response: HttpResponseBase): Observable<SpecializationDto[]> {
+  protected processGetSpecializations(response: HttpResponseBase): Observable<SpecializationDto[]> {
     const status = response.status;
     const responseBlob =
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -925,7 +975,7 @@ export class Client {
     url_ = url_.replace("{id}", encodeURIComponent("" + id));
     url_ = url_.replace(/[?&]$/, "");
 
-    let options_: any = {
+    let options_ : any = {
       observe: "response",
       responseType: "blob",
       headers: new HttpHeaders({
@@ -933,7 +983,7 @@ export class Client {
       })
     };
 
-    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processGetSpecializationById(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -953,7 +1003,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -970,7 +1020,7 @@ export class Client {
   }
 
   /**
-   * @param body (optional) 
+   * @param body (optional)
    * @return Success
    */
   createSpecialization(body: SpecializationDto | undefined): Observable<SpecializationDto> {
@@ -979,7 +1029,7 @@ export class Client {
 
     const content_ = JSON.stringify(body);
 
-    let options_: any = {
+    let options_ : any = {
       body: content_,
       observe: "response",
       responseType: "blob",
@@ -989,7 +1039,7 @@ export class Client {
       })
     };
 
-    return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processCreateSpecialization(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -1009,7 +1059,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -1026,7 +1076,7 @@ export class Client {
   }
 
   /**
-   * @param body (optional) 
+   * @param body (optional)
    * @return Success
    */
   updateSpecializationById(id: number, body: SpecializationDto | undefined): Observable<SpecializationDto> {
@@ -1038,7 +1088,7 @@ export class Client {
 
     const content_ = JSON.stringify(body);
 
-    let options_: any = {
+    let options_ : any = {
       body: content_,
       observe: "response",
       responseType: "blob",
@@ -1048,7 +1098,7 @@ export class Client {
       })
     };
 
-    return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processUpdateSpecializationById(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -1068,7 +1118,7 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         let result200: any = null;
@@ -1094,14 +1144,14 @@ export class Client {
     url_ = url_.replace("{id}", encodeURIComponent("" + id));
     url_ = url_.replace(/[?&]$/, "");
 
-    let options_: any = {
+    let options_ : any = {
       observe: "response",
       responseType: "blob",
       headers: new HttpHeaders({
       })
     };
 
-    return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_: any) => {
+    return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
       return this.processDeleteSpecializationById(response_);
     })).pipe(_observableCatch((response_: any) => {
       if (response_ instanceof HttpResponseBase) {
@@ -1121,68 +1171,10 @@ export class Client {
       response instanceof HttpResponse ? response.body :
         (response as any).error instanceof Blob ? (response as any).error : undefined;
 
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
+    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
     if (status === 200) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
         return _observableOf(null as any);
-      }));
-    } else if (status !== 200 && status !== 204) {
-      return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
-        return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-      }));
-    }
-    return _observableOf(null as any);
-  }
-
-  /**
-   * @return Success
-   */
-  weatherForecast(): Observable<WeatherForecast[]> {
-    let url_ = this.baseUrl + "/api/WeatherForecast";
-    url_ = url_.replace(/[?&]$/, "");
-
-    let options_: any = {
-      observe: "response",
-      responseType: "blob",
-      headers: new HttpHeaders({
-        "Accept": "text/plain"
-      })
-    };
-
-    return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_: any) => {
-      return this.processWeatherForecast(response_);
-    })).pipe(_observableCatch((response_: any) => {
-      if (response_ instanceof HttpResponseBase) {
-        try {
-          return this.processWeatherForecast(response_ as any);
-        } catch (e) {
-          return _observableThrow(e) as any as Observable<WeatherForecast[]>;
-        }
-      } else
-        return _observableThrow(response_) as any as Observable<WeatherForecast[]>;
-    }));
-  }
-
-  protected processWeatherForecast(response: HttpResponseBase): Observable<WeatherForecast[]> {
-    const status = response.status;
-    const responseBlob =
-      response instanceof HttpResponse ? response.body :
-        (response as any).error instanceof Blob ? (response as any).error : undefined;
-
-    let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); } }
-    if (status === 200) {
-      return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
-        let result200: any = null;
-        let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-        if (Array.isArray(resultData200)) {
-          result200 = [] as any;
-          for (let item of resultData200)
-            result200!.push(WeatherForecast.fromJS(item));
-        }
-        else {
-          result200 = <any>null;
-        }
-        return _observableOf(result200);
       }));
     } else if (status !== 200 && status !== 204) {
       return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
@@ -1254,6 +1246,7 @@ export class DoctorDto implements IDoctorDto {
   phoneNumber?: string | undefined;
   expOfSpec?: string | undefined;
   photo?: string | undefined;
+  specializationIds?: number[] | undefined;
 
   constructor(data?: IDoctorDto) {
     if (data) {
@@ -1274,6 +1267,11 @@ export class DoctorDto implements IDoctorDto {
       this.phoneNumber = _data["phoneNumber"];
       this.expOfSpec = _data["expOfSpec"];
       this.photo = _data["photo"];
+      if (Array.isArray(_data["specializationIds"])) {
+        this.specializationIds = [] as any;
+        for (let item of _data["specializationIds"])
+          this.specializationIds!.push(item);
+      }
     }
   }
 
@@ -1294,6 +1292,11 @@ export class DoctorDto implements IDoctorDto {
     data["phoneNumber"] = this.phoneNumber;
     data["expOfSpec"] = this.expOfSpec;
     data["photo"] = this.photo;
+    if (Array.isArray(this.specializationIds)) {
+      data["specializationIds"] = [];
+      for (let item of this.specializationIds)
+        data["specializationIds"].push(item);
+    }
     return data;
   }
 }
@@ -1307,6 +1310,7 @@ export interface IDoctorDto {
   phoneNumber?: string | undefined;
   expOfSpec?: string | undefined;
   photo?: string | undefined;
+  specializationIds?: number[] | undefined;
 }
 
 export class PolyclinicDto implements IPolyclinicDto {
@@ -1403,60 +1407,6 @@ export class SpecializationDto implements ISpecializationDto {
 export interface ISpecializationDto {
   id?: number | undefined;
   name?: string | undefined;
-}
-
-export class WeatherForecast implements IWeatherForecast {
-  date?: Date;
-  temperatureC?: number;
-  readonly temperatureF?: number;
-  summary?: string | undefined;
-
-  constructor(data?: IWeatherForecast) {
-    if (data) {
-      for (var property in data) {
-        if (data.hasOwnProperty(property))
-          (<any>this)[property] = (<any>data)[property];
-      }
-    }
-  }
-
-  init(_data?: any) {
-    if (_data) {
-      this.date = _data["date"] ? new Date(_data["date"].toString()) : <any>undefined;
-      this.temperatureC = _data["temperatureC"];
-      (<any>this).temperatureF = _data["temperatureF"];
-      this.summary = _data["summary"];
-    }
-  }
-
-  static fromJS(data: any): WeatherForecast {
-    data = typeof data === 'object' ? data : {};
-    let result = new WeatherForecast();
-    result.init(data);
-    return result;
-  }
-
-  toJSON(data?: any) {
-    data = typeof data === 'object' ? data : {};
-    data["date"] = this.date ? formatDate(this.date) : <any>undefined;
-    data["temperatureC"] = this.temperatureC;
-    data["temperatureF"] = this.temperatureF;
-    data["summary"] = this.summary;
-    return data;
-  }
-}
-
-export interface IWeatherForecast {
-  date?: Date;
-  temperatureC?: number;
-  temperatureF?: number;
-  summary?: string | undefined;
-}
-
-function formatDate(d: Date) {
-  return d.getFullYear() + '-' +
-    (d.getMonth() < 9 ? ('0' + (d.getMonth() + 1)) : (d.getMonth() + 1)) + '-' +
-    (d.getDate() < 10 ? ('0' + d.getDate()) : d.getDate());
 }
 
 export class ApiException extends Error {

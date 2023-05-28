@@ -1,6 +1,4 @@
-﻿using ProjectMed.Models;
-
-namespace ProjectMed.Dto.Doctors
+﻿namespace ProjectMed.Dto.Doctors
 {
     public class DoctorDto
     {
@@ -13,6 +11,7 @@ namespace ProjectMed.Dto.Doctors
         public string? ExpOfSpec { get; set; }
         public string? Photo { get; set; }
 
+        public List<int> SpecializationIds { get; set; }
         //public List<SpecializationDoctor> SpecializationDoctors { get; set; } = new();
         //public List<PolyclinicDoctor> PolyclinicDoctors { get; set; } = new();
     }

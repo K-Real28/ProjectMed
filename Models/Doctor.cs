@@ -14,5 +14,7 @@ namespace ProjectMed.Models
 
         public List<SpecializationDoctor> SpecializationDoctors { get; set; } = new();
         public List<PolyclinicDoctor> PolyclinicDoctors { get; set; } = new();
+
+
     }
 }

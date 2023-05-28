@@ -11,10 +11,10 @@ namespace ProjectMed
     {
         public AutoMapperConfig()
         {
-            CreateMap<City, CityDto>();             
-            CreateMap<Doctor, DoctorDto>();             
-            CreateMap<Polyclinic, PolyclinicDto>();             
-            CreateMap<Specialization, SpecializationDto>();             
+            CreateMap<City, CityDto>().ReverseMap();             
+            CreateMap<Doctor, DoctorDto>().ReverseMap();
+            CreateMap<Polyclinic, PolyclinicDto>().ReverseMap();
+            CreateMap<Specialization, SpecializationDto>().ReverseMap();
         }
     }
 }
