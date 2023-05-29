@@ -22,12 +22,12 @@ export class CreateDoctorComponent implements OnInit {
 
   create() {
     this.httpClient.post('api/doctors/CreateDoctor', this.request).subscribe(response => {
-
     }, error => {});
+    location.reload();
   }
 
   getSpecializations() {
-    this.httpClient.get<SpecializationDto[]>('api/specialization/GetSpecializations').subscribe(response => {
+    this.httpClient.get<SpecializationDto[]>('api/specializations/GetSpecializations').subscribe(response => {
       this.specializations = response;
     }, error => {});
   }

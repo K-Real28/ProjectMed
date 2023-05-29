@@ -1,4 +1,15 @@
 <h1>Добавление нового города</h1>
 
+<div class="form-group">
+  <form (ngSubmit)="create()">
+    <label>Название</label>
+    <input type="text" name="full" [(ngModel)]="request.name" class="form-control"/>
 
+    <div class="butt">
+      <input type="submit" value="Сохранить" class="btn btn-success"/>
+      <input type="button" value="Отмена" class="btn btn-warning"/>
+    </div>
+
+  </form>
+</div>
 

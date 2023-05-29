@@ -1,21 +1,24 @@
-<h1>Добавление новой больницы!</h1>
+<h1>Добавление поликлиники</h1>
 
 <div class="form-group">
+  <form (ngSubmit)="create()">
+
   <label>Наименование поликлиники</label>
-  <input type="text"  class="form-control" />
+  <input type="text" [(ngModel)]="request.name" class="form-control" />
 
   <label>Город</label>
-  <input type="text"  class="form-control" />
+  <input type="text" [(ngModel)]="request.address" class="form-control" />
 
   <label>Контактный номер</label>
-  <input type="number"  class="form-control" />
+  <input type="number" [(ngModel)]="request.phoneNumber" class="form-control" />
 
   <label>Фото</label>
   <input type="text"  class="form-control" />
 
-</div>
+    <div class="butt">
+      <input type="submit" value="Сохранить" class="btn btn-success"/>
+      <input type="button" value="Отмена" class="btn btn-warning"/>
+    </div>
 
-<div class="butt">
-  <input type="button" value="Сохранить"  class="btn btn-success" />
-  <input type="button" value="Отмена"  class="btn btn-warning" />
+  </form>
 </div>

@@ -1,11 +1,14 @@
 <h1>Добавление новой специальности!</h1>
 
 <div class="form-group">
+  <form (ngSubmit)="create()">
   <label>Наименование</label>
-  <input type="text"  class="form-control" />
-</div>
+  <input type="text" [(ngModel)]="request.name" class="form-control" />
 
 <div class="butt">
-  <input type="button" value="Сохранить"  class="btn btn-success" />
-  <input type="button" value="Отмена"  class="btn btn-warning" />
+  <input type="submit" value="Сохранить" class="btn btn-success" />
+  <input type="button" value="Отмена" class="btn btn-warning"/>
+</div>
+
+</form>
 </div>

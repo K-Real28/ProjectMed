@@ -4,7 +4,7 @@ import {PolyclinicDto, SpecializationDto} from "../../services/Client";
 
 @Component({
 
-  selector: 'page-spec',
+  selector: 'spec',
   templateUrl: './specializations.component.html',
   styleUrls: ['./specializations.component.css'],
 })
