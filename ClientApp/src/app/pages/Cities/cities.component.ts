@@ -1,6 +1,7 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
 import { Component, NgModule, OnInit } from '@angular/core';
 import {CityDto, Client} from '../../services/Client';
+import {AuthorizeGuard} from "../../../api-authorization/authorize.guard";
 
 @Component({
 
@@ -9,12 +10,10 @@ import {CityDto, Client} from '../../services/Client';
   styleUrls: ['./cities.component.css'],
 })
 
-
 export class CitiesComponent implements OnInit{
   public cities: Array<CityDto> = new Array<CityDto>();
 
-  constructor(public httpClient: HttpClient) {
-  }
+  constructor(public httpClient: HttpClient) {}
 
   ngOnInit() {
     this.getCities();
@@ -27,12 +26,6 @@ export class CitiesComponent implements OnInit{
       this.cities = result;
     }, error => console.error(error));
   }
-
-  // getCity() {
-  //   this.httpClient.get('api/cities/GetCity').subscribe(result => {
-  //    console.log(result);
-  //   }, error => console.error(error));
-  // }
 
   createCity(city: City) {
     return this.httpClient.post(this.baseUrl, city)

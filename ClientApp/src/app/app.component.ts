@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { CityDto } from './services/Client';
 
 @Component({
@@ -8,6 +9,7 @@ import { CityDto } from './services/Client';
 })
 
 export class AppComponent implements OnInit {
+
   //типы шаблонов
   @ViewChild('readOnlyTemplate', { static: false })
     readOnlyTemplate!: TemplateRef<any>;

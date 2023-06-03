@@ -3,7 +3,7 @@
 <div class="form-group">
   <form (ngSubmit)="create()">
     <label>ФИО</label>
-    <input type="text" name="full" [(ngModel)]="request.fullName" class="form-control"/>
+    <input type="text" name="full" [(ngModel)]="request.fullName"  class="form-control"/>
 
     <!--  <label>Специализация</label>-->
     <!--  <input type="text"  class="form-control" />-->
@@ -19,22 +19,22 @@
     <!--  <input type="text"  class="form-control" />-->
 
     <label>Стоимость приема</label>
-    <input type="number" [(ngModel)]="request.costOfVisit" class="form-control"/>
+    <input type="number" name="full" [(ngModel)]="request.costOfVisit" class="form-control"/>
 
     <label>Номер телефона</label>
-    <input type="number" [(ngModel)]="request.phoneNumber" class="form-control"/>
+    <input type="text" name="full" [(ngModel)]="request.phoneNumber" class="form-control"/>
 
-    <!--  <label>Фото</label>-->
-    <!--  <input type="text"  class="form-control" />-->
+    <label>Фото</label>
+    <input type="text" name="full" [(ngModel)]="request.photo" class="form-control" />
 
     <label>Опыт по специальности</label>
-    <input type="number" [ngModel]="request.expOfSpec" class="form-control"/>
+    <input type="text" name="full"  [ngModel]="request.expOfSpec" class="form-control"/>
 
     <label>Краткое описание</label>
-    <input type="text" [(ngModel)]="request.shortInfo" class="form-control"/>
+    <input type="text" name="full" [(ngModel)]="request.shortInfo" class="form-control"/>
 
     <label>Полное описание</label>
-    <input type="text" [(ngModel)]="request.fullInfo" class="form-control"/>
+    <input type="text" name="full" [(ngModel)]="request.fullInfo" class="form-control"/>
 
 
     <div class="butt">

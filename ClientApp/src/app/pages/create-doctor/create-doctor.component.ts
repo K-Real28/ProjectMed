@@ -21,9 +21,10 @@ export class CreateDoctorComponent implements OnInit {
   }
 
   create() {
+    this.request.specializationIds = [];
     this.httpClient.post('api/doctors/CreateDoctor', this.request).subscribe(response => {
     }, error => {});
-    location.reload();
+    //location.reload();
   }
 
   getSpecializations() {

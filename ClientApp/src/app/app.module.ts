@@ -24,6 +24,7 @@ import {PutPolyclinicComponent} from "./pages/put-polyclinic/put-polyclinic.comp
 import {PutSpecializationComponent} from "./pages/put-specialization/put-specialization.component";
 import {PutCityComponent} from "./pages/put-city/put-city.component";
 import {PutDoctorComponent} from "./pages/put-doctor/put-doctor.component";
+import {AuthButtonDirective} from "./pages/auth-button.directive";
 
 const routes: Routes = [{ path: 'main', component: MainComponent },
 { path: 'cities', component: CitiesComponent },
@@ -38,7 +39,7 @@ const routes: Routes = [{ path: 'main', component: MainComponent },
   { path: 'put-doctor', component: PutDoctorComponent, canActivate: [AuthorizeGuard]},
   { path: 'put-city', component: PutCityComponent, canActivate: [AuthorizeGuard]},
   { path: 'put-specialization', component: PutSpecializationComponent, canActivate: [AuthorizeGuard]},
-
+  { path: 'appAuthButton', component: AuthButtonDirective, canActivate: [AuthorizeGuard]},
 { path: '**', redirectTo: '/main' }];
 
 @NgModule({
@@ -59,6 +60,7 @@ const routes: Routes = [{ path: 'main', component: MainComponent },
     DoctorsComponent,
     SpecializationsComponent,
     PolyclinicsComponent,
+    AuthButtonDirective,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
