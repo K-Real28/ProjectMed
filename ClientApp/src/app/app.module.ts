@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet, Routes } from '@angular/router';
 
+import {CommonModule} from '@angular/common';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -67,6 +68,7 @@ const routes: Routes = [{ path: 'main', component: MainComponent },
     HttpClientModule,
     FormsModule,
     ApiAuthorizationModule,
+    CommonModule,
     RouterModule.forRoot(routes), RouterOutlet, RouterLink, RouterLinkActive,
   ],
   providers: [

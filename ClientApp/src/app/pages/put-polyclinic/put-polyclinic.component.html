@@ -1,4 +1,4 @@
-<h1 class="display-4">Обновление Поликлиник</h1>
+<h1 class="display-4">Обновление поликлиники</h1>
 <!-- Форма для обновления данных -->
 <form>
   <div class="input-group input-group-lg">
@@ -6,11 +6,8 @@
     <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
   </div>
   <h3></h3>
-  <select class="form-select" aria-label="Default select example">
-    <option selected>Open this select menu</option>
-    <option value="1">Kamenka</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+  <select class="form-select">
+    <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
   </select>
   <h3></h3>
   <div class="input-group input-group-lg">

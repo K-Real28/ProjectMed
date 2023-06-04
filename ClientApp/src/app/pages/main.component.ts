@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {/*Cities,*/ Client} from "../services/Client";
+import {/*Cities,*/ Client, SpecializationDto} from "../services/Client";
+import {HttpClient} from "@angular/common/http";
 
 
 @Component({
@@ -10,7 +11,22 @@ import {/*Cities,*/ Client} from "../services/Client";
 
 export class MainComponent implements  OnInit {
 
-   ngOnInit(): void { }
+  public specializations: Array<SpecializationDto> = new Array<SpecializationDto>();
+
+  ngOnInit() {
+    this.getSpecializations();
+  }
+
+  private baseUrl = 'api/specializations/'
+
+  constructor(public httpClient: HttpClient) {
+  }
+
+  getSpecializations() {
+    this.httpClient.get<SpecializationDto[]>(this.baseUrl + 'GetSpecializations').subscribe(result => {
+      this.specializations = result;
+    }, error => console.error(error));
+  }
 
 }
 
