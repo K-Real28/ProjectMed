@@ -4,11 +4,11 @@ import {HttpClient} from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 @Component({
-  selector: 'put-polyclinic',
-  templateUrl: './put-polyclinic.component.html',
-  styleUrls: ['./put-polyclinic.component.css']
+  selector: 'edit-polyclinic',
+  templateUrl: './edit-polyclinic.component.html',
+  styleUrls: ['./edit-polyclinic.component.css']
 })
-export class PutPolyclinicComponent {
+export class EditPolyclinicComponent {
   public cities: Array<CityDto> = new Array<CityDto>();
   public test: CityDto = new CityDto();
 

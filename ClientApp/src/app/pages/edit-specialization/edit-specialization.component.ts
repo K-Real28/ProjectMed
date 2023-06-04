@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'put-specialization',
-  templateUrl: './put-specialization.component.html',
-  styleUrls: ['./put-specialization.component.css']
+  selector: 'edit-specialization',
+  templateUrl: './edit-specialization.component.html',
+  styleUrls: ['./edit-specialization.component.css']
 })
-export class PutSpecializationComponent {
+export class EditSpecializationComponent {
 
 }

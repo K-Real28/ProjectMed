@@ -1,14 +1,50 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import { Observable } from 'rxjs';
+import {ActivatedRoute, Router} from "@angular/router";
+import {CitiesComponent} from "../Cities/cities.component";
 import {CityDto} from "../../services/Client";
 
 @Component({
-  selector: 'put-city',
-  templateUrl: './put-city.component.html',
-  styleUrls: ['./put-city.component.css']
+  selector: 'edit-city',
+  templateUrl: './edit-city.component.html',
+  styleUrls: ['./edit-city.component.css']
 })
-export class PutCityComponent {
+export class EditCityComponent   {
+
+  // CityDetails: CityDto = {
+  //   id: '',
+  //   name: ''
+  // };
+
+  constructor(private route: ActivatedRoute, private citiesComponent: CitiesComponent, private router: Router) {
+  }
+
+  /*ngOnInit(): void {
+    this.route.paramMap.subscribe({
+      next: (params) => {
+        const id = params.get('id');
+
+        if (id) {
+          this.citiesComponent.getCity(id)
+            .subscribe({
+              next: (response: CityDto) => {
+                this.CityDetails = response;
+              }
+            });
+        }
+      }
+    })
+  }
+
+  updateCity(){
+    this.citiesComponent.updateCity(this.CityDetails.id, this.CityDetails)
+      .subscribe({
+        next: (response) => {
+          this.router.navigate(['city']);
+        }
+      });
+  }*/
+}
+
 
   // constructor(public httpClient: HttpClient) {}
   //   private apiUrl = 'api/cities/UpdateCityById';
@@ -32,4 +68,4 @@ export class PutCityComponent {
   //       }
   //     );
   //   }
-}
+

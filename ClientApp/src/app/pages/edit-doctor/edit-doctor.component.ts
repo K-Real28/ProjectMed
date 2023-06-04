@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'put-doctor',
-  templateUrl: './put-doctor.component.html',
-  styleUrls: ['./put-doctor.component.css']
+  selector: 'edit-doctor',
+  templateUrl: './edit-doctor.component.html',
+  styleUrls: ['./edit-doctor.component.css']
 })
-export class PutDoctorComponent {
+export class EditDoctorComponent {
 
 }

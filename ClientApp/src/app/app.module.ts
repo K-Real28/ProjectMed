@@ -21,10 +21,10 @@ import {CreateCityComponent} from "./pages/create-city/create-city.component";
 import {CreatePolyclinicComponent} from "./pages/create-polyclinic/create-polyclinic.component";
 import {CreateSpecializationComponent} from "./pages/create-specialization/create-specialization.component";
 import {CreateDoctorComponent} from "./pages/create-doctor/create-doctor.component";
-import {PutPolyclinicComponent} from "./pages/put-polyclinic/put-polyclinic.component";
-import {PutSpecializationComponent} from "./pages/put-specialization/put-specialization.component";
-import {PutCityComponent} from "./pages/put-city/put-city.component";
-import {PutDoctorComponent} from "./pages/put-doctor/put-doctor.component";
+import {EditPolyclinicComponent} from "./pages/edit-polyclinic/edit-polyclinic.component";
+import {EditSpecializationComponent} from "./pages/edit-specialization/edit-specialization.component";
+import {EditCityComponent} from "./pages/edit-city/edit-city.component";
+import {EditDoctorComponent} from "./pages/edit-doctor/edit-doctor.component";
 import {AuthButtonDirective} from "./pages/auth-button.directive";
 
 const routes: Routes = [{ path: 'main', component: MainComponent },
@@ -36,11 +36,12 @@ const routes: Routes = [{ path: 'main', component: MainComponent },
   { path: 'create-polyclinic', component: CreatePolyclinicComponent, canActivate: [AuthorizeGuard]},
   { path: 'create-specialization', component: CreateSpecializationComponent, canActivate: [AuthorizeGuard]},
   { path: 'create-doctor', component: CreateDoctorComponent, canActivate: [AuthorizeGuard]},
-  { path: 'put-polyclinic', component: PutPolyclinicComponent, canActivate: [AuthorizeGuard]},
-  { path: 'put-doctor', component: PutDoctorComponent, canActivate: [AuthorizeGuard]},
-  { path: 'put-city', component: PutCityComponent, canActivate: [AuthorizeGuard]},
-  { path: 'put-specialization', component: PutSpecializationComponent, canActivate: [AuthorizeGuard]},
+  { path: 'edit-polyclinic', component: EditPolyclinicComponent, canActivate: [AuthorizeGuard]},
+  { path: 'edit-doctor', component: EditDoctorComponent, canActivate: [AuthorizeGuard]},
+  { path: 'edit-city/:id', component: EditCityComponent, canActivate: [AuthorizeGuard]},
+  { path: 'edit-specialization', component: EditSpecializationComponent, canActivate: [AuthorizeGuard]},
   { path: 'appAuthButton', component: AuthButtonDirective, canActivate: [AuthorizeGuard]},
+
 { path: '**', redirectTo: '/main' }];
 
 @NgModule({
@@ -54,10 +55,10 @@ const routes: Routes = [{ path: 'main', component: MainComponent },
     CreatePolyclinicComponent,
     CreateSpecializationComponent,
     CreateDoctorComponent,
-    PutCityComponent,
-    PutDoctorComponent,
-    PutPolyclinicComponent,
-    PutSpecializationComponent,
+    EditCityComponent,
+    EditDoctorComponent,
+    EditPolyclinicComponent,
+    EditSpecializationComponent,
     DoctorsComponent,
     SpecializationsComponent,
     PolyclinicsComponent,

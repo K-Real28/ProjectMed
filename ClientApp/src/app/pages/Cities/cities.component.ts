@@ -2,6 +2,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import { Component, NgModule, OnInit } from '@angular/core';
 import {CityDto, Client} from '../../services/Client';
 import {AuthorizeGuard} from "../../../api-authorization/authorize.guard";
+import {Observable} from "rxjs";
 
 @Component({
 
@@ -27,17 +28,24 @@ export class CitiesComponent implements OnInit{
     }, error => console.error(error));
   }
 
+  getCity(id: number) {
+    this.httpClient.get<CityDto[]>(this.baseUrl + 'GetCityById' + id );
+  }
   createCity(city: City) {
     return this.httpClient.post(this.baseUrl, city)
   }
   updateCity(id: number, city: City) {
-    const urlParams = new HttpParams().set(
-      'id',
-      id.toString()
-    )
-    return this.httpClient.put(this.baseUrl, city, {
-      params: urlParams,
-    })
+    //return this.httpClient.put<CityDto>(this.baseUrl + 'UpdateCityById' + id);
+    //Ошибка вверху
+
+
+    // const urlParams = new HttpParams().set(
+    //   'id',
+    //   id.toString()
+    // )
+    // return this.httpClient.put(this.baseUrl, city, {
+    //   params: urlParams,
+    // })
   }
   deleteCity(id: any) {
     if(confirm("Вы уверены, что хотите удалить запись?")) {
