@@ -26,6 +26,12 @@ import {EditSpecializationComponent} from "./pages/edit-specialization/edit-spec
 import {EditCityComponent} from "./pages/edit-city/edit-city.component";
 import {EditDoctorComponent} from "./pages/edit-doctor/edit-doctor.component";
 import {AuthButtonDirective} from "./pages/auth-button.directive";
+import {ZubnoiComponent} from "./pages/pageOfSpecialization/zubnoi/zubnoi.component";
+import {TravmatologComponent} from "./pages/pageOfSpecialization/travmatolog/travmatolog.component";
+import {TerapevtComponent} from "./pages/pageOfSpecialization/terapevt/terapevt.component";
+import {PsyhologComponent} from "./pages/pageOfSpecialization/psyholog/psyholog.component";
+import {OkulistComponent} from "./pages/pageOfSpecialization/okulist/okulist.component";
+import {HirurgComponent} from "./pages/pageOfSpecialization/hirurg/hirurg.component";
 
 const routes: Routes = [{ path: 'main', component: MainComponent },
 { path: 'cities', component: CitiesComponent },
@@ -36,11 +42,17 @@ const routes: Routes = [{ path: 'main', component: MainComponent },
   { path: 'create-polyclinic', component: CreatePolyclinicComponent, canActivate: [AuthorizeGuard]},
   { path: 'create-specialization', component: CreateSpecializationComponent, canActivate: [AuthorizeGuard]},
   { path: 'create-doctor', component: CreateDoctorComponent, canActivate: [AuthorizeGuard]},
-  { path: 'edit-polyclinic', component: EditPolyclinicComponent, canActivate: [AuthorizeGuard]},
-  { path: 'edit-doctor', component: EditDoctorComponent, canActivate: [AuthorizeGuard]},
+  { path: 'edit-polyclinic/:id', component: EditPolyclinicComponent, canActivate: [AuthorizeGuard]},
+  { path: 'edit-doctor/:id', component: EditDoctorComponent, canActivate: [AuthorizeGuard]},
   { path: 'edit-city/:id', component: EditCityComponent, canActivate: [AuthorizeGuard]},
-  { path: 'edit-specialization', component: EditSpecializationComponent, canActivate: [AuthorizeGuard]},
+  { path: 'edit-specialization/:id', component: EditSpecializationComponent, canActivate: [AuthorizeGuard]},
   { path: 'appAuthButton', component: AuthButtonDirective, canActivate: [AuthorizeGuard]},
+  { path: 'zubnoi', component: ZubnoiComponent},
+  { path: 'travmatolog', component: TravmatologComponent},
+  { path: 'terapevt', component: TerapevtComponent},
+  { path: 'psyholog', component: PsyhologComponent},
+  { path: 'okulist', component: OkulistComponent},
+  { path: 'hirurg', component: HirurgComponent},
 
 { path: '**', redirectTo: '/main' }];
 
@@ -63,6 +75,12 @@ const routes: Routes = [{ path: 'main', component: MainComponent },
     SpecializationsComponent,
     PolyclinicsComponent,
     AuthButtonDirective,
+    ZubnoiComponent,
+    TravmatologComponent,
+    TerapevtComponent,
+    PsyhologComponent,
+    OkulistComponent,
+    HirurgComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

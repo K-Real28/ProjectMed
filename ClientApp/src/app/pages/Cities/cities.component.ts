@@ -3,6 +3,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import {CityDto, Client} from '../../services/Client';
 import {AuthorizeGuard} from "../../../api-authorization/authorize.guard";
 import {Observable} from "rxjs";
+import {AuthorizeService} from "../../../api-authorization/authorize.service";
 
 @Component({
 
@@ -12,9 +13,10 @@ import {Observable} from "rxjs";
 })
 
 export class CitiesComponent implements OnInit{
+
   public cities: Array<CityDto> = new Array<CityDto>();
 
-  constructor(public httpClient: HttpClient) {}
+  constructor(public httpClient: HttpClient, public authorizeService: AuthorizeService) {}
 
   ngOnInit() {
     this.getCities();
@@ -55,6 +57,12 @@ export class CitiesComponent implements OnInit{
     }
   }
   title = 'angularapp';
+  isAuthenticated(): boolean {
+    // Получить информацию о состоянии авторизации из хранилища данных
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    return isLoggedIn === 'true';
+  }
+
 }
 
 interface City {
